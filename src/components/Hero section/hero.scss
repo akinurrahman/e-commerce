@@ -1,4 +1,5 @@
 @import "../../base";
+@import "../../mixin";
 
 .container {
   padding: 12rem 0;
@@ -72,5 +73,7 @@
   margin: 0 auto;
 }
 
-
+button{
+  @include button;
+}
 

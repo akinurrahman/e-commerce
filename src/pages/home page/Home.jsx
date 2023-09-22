@@ -5,7 +5,7 @@ import Trusted from '../../components/trust section/Trusted'
 
 const Home = () => {
   return (
-    <div style={{height:'100vh', width: '100vw'}}>
+    <div>
       <HeroSection title="Shoppy Store"/>
       <Service/>
       <Trusted/>

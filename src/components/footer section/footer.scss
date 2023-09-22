@@ -68,3 +68,12 @@ footer {
 .btn-style {
   @include button;
 }
+
+
+@media (max-width: 998px) {
+    .container {
+      max-width: 130rem;
+      padding: 0 3.2rem;
+    }
+  
+  }

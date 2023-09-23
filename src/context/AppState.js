@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useContext } from "react";
 import ProductReducer from "../reducer/ProductReducer";
 
 // Create a React context to provide state to components
@@ -53,5 +53,9 @@ const AppState = (props) => {
   );
 };
 
-export default AppState;
-export { AppContext };
+// custom hooks
+const useProductContext = () => {
+  return useContext(AppContext);
+};
+
+export { AppState, AppContext, useProductContext };

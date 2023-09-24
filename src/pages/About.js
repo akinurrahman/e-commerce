@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import HeroSection from "../components/HeroSection";
-import { useProductContext } from "../context/productcontex";
+import { AppContext, useProductContext } from "../context/productcontex";
 
 const About = () => {
-  const { myName } = useProductContext();
+  const { myName } = useContext(AppContext);
 
   const data = {
     name: "Shoppy Ecommerce",

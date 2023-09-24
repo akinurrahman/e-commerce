@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { useProductContext } from "../context/productcontex";
+import { AppContext } from "../context/productcontex";
 import PageNavigation from "../components/PageNavigation";
 import MyImage from "../components/MyImage";
 import { Container } from "../styles/Container";
@@ -14,24 +14,16 @@ const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
-    useProductContext();
+    useContext(AppContext);
 
   const { id } = useParams();
 
-  const {
-    name,
-    company,
-    price,
-    description,
-    stock,
-    stars,
-    reviews,
-    image,
-  } = singleProduct;
+  const { name, company, price, description, stock, stars, reviews, image } =
+    singleProduct;
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isSingleLoading) {
@@ -48,7 +40,7 @@ const SingleProduct = () => {
             <MyImage imgs={image} />
           </div>
 
-          {/* product dAta  */}
+          {/* product data  */}
           <div className="product-data">
             <h2>{name}</h2>
             <Star stars={stars} reviews={reviews} />

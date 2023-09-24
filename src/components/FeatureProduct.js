@@ -1,9 +1,10 @@
-import { useProductContext } from "../context/productcontex";
+import { AppContext } from "../context/productcontex";
 import styled from "styled-components";
 import Product from "./Product";
+import { useContext } from "react";
 
 const FeatureProduct = () => {
-  const { isLoading, featureProducts } = useProductContext();
+  const { isLoading, featureProducts } = useContext(AppContext);
 
   if (isLoading) {
     return <div> ......Loading </div>;

@@ -1,39 +1,68 @@
 const ProductReducer = (state, action) => {
-    switch (action.type) {
-      // When loading data, set isLoading to true
-      case "LOADING_TRUE":
-        return {
-          ...state,
-          isLoading: true,
-        };
-  
-      // When API data is received, update the state with products
-      case "API_DATA":
-        // Filter featured products from the received data
-        const featuredData = action.payload.filter((currElem) => {
-          return currElem.featured === true;
-        });
-  
-        return {
-          ...state,
-          isLoading: false,
-          products: action.payload,
-          featuredProducts: featuredData,
-        };
-  
-      // When an API error occurs, set isError to true
-      case "API_ERROR":
-        return {
-          ...state,
-          isLoading: false,
-          isError: true,
-        };
-  
-      // Default case: return the current state unchanged
-      default:
-        return state;
-    }
-  };
-  
-  export default ProductReducer;
-  
+  // if (action.type === "SET_LOADING") {
+  //   return {
+  //     ...state,
+  //     isLoading: true,
+  //   };
+  // }
+
+  // if (action.type === "API_ERROR") {
+  //   return {
+  //     ...state,
+  //     isLoading: false,
+  //     isError: true,
+  //   };
+  // }
+
+  switch (action.type) {
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case "SET_API_DATA":
+      const featureData = action.payload.filter((curElem) => {
+        return curElem.featured === true;
+      });
+
+      return {
+        ...state,
+        isLoading: false,
+        products: action.payload,
+        featureProducts: featureData,
+      };
+
+    case "API_ERROR":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+
+    case "SET_SINGLE_LOADING":
+      return {
+        ...state,
+        isSingleLoading: true,
+      };
+
+    case "SET_SINGLE_PRODUCT":
+      return {
+        ...state,
+        isSingleLoading: false,
+        singleProduct: action.payload,
+      };
+
+    case "SET_SINGLE_ERROR":
+      return {
+        ...state,
+        isSingleLoading: false,
+        isError: true,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default ProductReducer;

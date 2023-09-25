@@ -1,12 +1,13 @@
+import { actions } from "../context/AppProvider";
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case "SET_LOADING":
+    case actions.SET_LOADING:
       return {
         ...state,
         isLoading: true,
       };
 
-    case "SET_API_DATA":
+    case actions.SET_API_DATA:
       const featureData = action.payload.filter((curElem) => {
         return curElem.featured === true;
       });
@@ -18,27 +19,27 @@ const AppReducer = (state, action) => {
         featureProducts: featureData,
       };
 
-    case "API_ERROR":
+    case actions.API_ERROR:
       return {
         ...state,
         isLoading: false,
         isError: true,
       };
 
-    case "SET_SINGLE_LOADING":
+    case actions.SET_SINGLE_LOADING:
       return {
         ...state,
         isSingleLoading: true,
       };
 
-    case "SET_SINGLE_PRODUCT":
+    case actions.SET_SINGLE_PRODUCT:
       return {
         ...state,
         isSingleLoading: false,
         singleProduct: action.payload,
       };
 
-    case "SET_SINGLE_ERROR":
+    case actions.SET_SINGLE_ERROR:
       return {
         ...state,
         isSingleLoading: false,

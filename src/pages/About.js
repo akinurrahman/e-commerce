@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import HeroSection from "../components/HeroSection";
-import { AppContext } from "../context/productcontex";
+import { AppContext } from "../context/Productcontex";
 
 const About = () => {
   const { myName } = useContext(AppContext);

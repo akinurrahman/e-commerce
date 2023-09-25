@@ -9,7 +9,7 @@ import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import Star from "../components/Star";
 import AddToCart from "../components/AddToCart";
-import { AppContext } from "../context/Productcontex";
+import { AppContext } from "../context/AppProvider";
 
 const API = "https://api.pujakaitem.com/api/products";
 

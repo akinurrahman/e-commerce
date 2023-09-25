@@ -1,9 +1,7 @@
-import { createContext, useEffect, useReducer } from "react";
-import reducer from "../reducer/ProductReducer";
+import reducer from "../reducer/AppReducer";
+import { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
-
 const AppContext = createContext();
-
 const API = "https://api.pujakaitem.com/api/products";
 
 const initialState = {
@@ -14,8 +12,7 @@ const initialState = {
   isSingleLoading: false,
   singleProduct: {},
 };
-
-const AppProvider = ({ children }) => {
+const AppProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getProducts = async (url) => {
@@ -48,7 +45,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{ ...state, getSingleProduct }}>
-      {children}
+      {props.children}
     </AppContext.Provider>
   );
 };

@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
+import CartQuantityToggle from "./CartQuantityToggle";
+import { NavLink } from "react-router-dom";
+import { Button } from "../styles/Button";
 const AddToCart = ({ product }) => {
-  const { colors } = product;
+  const { colors, stock } = product;
   const [color, setColor] = useState(colors[0]);
+  const [quantity, setQuantity] = useState(1);
+
+  const setIncr = () => {
+    quantity < stock && setQuantity((prev) => prev + 1);
+  };
+  const setDecr = () => {
+    quantity > 1 && setQuantity((prev) => prev - 1);
+  };
   return (
     <Wrapper>
       <div className="colors">
@@ -23,6 +34,15 @@ const AddToCart = ({ product }) => {
           })}
         </p>
       </div>
+
+      <CartQuantityToggle
+        quantity={quantity}
+        setIncr={setIncr}
+        setDecr={setDecr}
+      />
+      <NavLink to="/cart">
+        <Button className="btn">Add To Cart</Button>
+      </NavLink>
     </Wrapper>
   );
 };
@@ -59,7 +79,7 @@ const Wrapper = styled.section`
   }
 
   /* we can use it as a global one too  */
-  .amount-toggle {
+  .quantity-toggle {
     margin-top: 3rem;
     margin-bottom: 1rem;
     display: flex;
@@ -73,7 +93,7 @@ const Wrapper = styled.section`
       cursor: pointer;
     }
 
-    .amount-style {
+    .quantity-style {
       font-size: 2.4rem;
       color: ${({ theme }) => theme.colors.btn};
     }

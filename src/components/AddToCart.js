@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { FaCheck } from "react-icons/fa";
 const AddToCart = ({ product }) => {
-  const {  colors } = product;
+  const { colors } = product;
   const [color, setColor] = useState(colors[0]);
   return (
     <Wrapper>
@@ -12,10 +13,12 @@ const AddToCart = ({ product }) => {
             return (
               <button
                 key={index}
-                onClick={()=> setColor(colors[index])}
+                onClick={() => setColor(colors[index])}
                 style={{ background: currColor }}
                 className={color === currColor ? "btnStyle active" : "btnStyle"}
-              ></button>
+              >
+                {color === currColor ? <FaCheck /> : null}
+              </button>
             );
           })}
         </p>

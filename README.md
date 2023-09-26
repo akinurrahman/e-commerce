@@ -1,3 +1,7 @@
+# Live Project
+
+https://akinur-e-commerce.netlify.app/
+
 # Installations
 
 1. npm install styled-components

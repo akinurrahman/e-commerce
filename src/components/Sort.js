@@ -43,8 +43,9 @@ const Sort = () => {
             value={selected_value}
             onChange={handleSorting}
           >
-            <option value="Lowest To Highest">Lowest To Highest</option>
-            <option value="Highest To Lowest">Highest To Lowest</option>
+            <option value="">Sort By</option>
+            <option value="Lowest To Highest">Price--Low to High</option>
+            <option value="Highest To Lowest">Price--High to Low</option>
             <option value="a-z">A-Z</option>
             <option value="z-a">Z-A</option>
           </select>

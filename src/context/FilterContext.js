@@ -11,7 +11,6 @@ const initialState = {
 };
 const FilterContextProvider = (props) => {
   const { products } = useContext(AppContext);
-  //   console.log(products)
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // to set grid view

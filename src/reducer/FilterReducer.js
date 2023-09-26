@@ -33,6 +33,14 @@ const FilterReducer = (state, action) => {
         sortedProducts = state.filter_products.slice().sort((a, b) => {
           return b.name.localeCompare(a.name);
         });
+      } else if (action.payload === "Lowest To Highest") {
+        sortedProducts = state.filter_products.slice().sort((a, b) => {
+          return parseFloat(a.price) - parseFloat(b.price);
+        });
+      } else if (action.payload === "Highest To Lowest") {
+        sortedProducts = state.filter_products.slice().sort((a, b) => {
+          return parseFloat(b.price) - parseFloat(a.price);
+        });
       } else {
         // No sorting is applied, so use all products in their original order
         sortedProducts = state.all_products.slice();

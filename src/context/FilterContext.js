@@ -7,6 +7,7 @@ const initialState = {
   filter_products: [],
   all_products: [],
   grid_view: true,
+  selected_value : ""
 };
 const FilterContextProvider = (props) => {
   const { products } = useContext(AppContext);
@@ -22,11 +23,17 @@ const FilterContextProvider = (props) => {
     return dispatch({ type: "SET_LIST_VIEW" });
   };
 
+  // handleSorting 
+  const handleSorting  =(e)=>{
+    const eventValue = e.target.value
+    dispatch({type:"SORT_PRODUCTS", payload: eventValue})
+  }
+
   useEffect(() => {
     dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
   }, [products]);
   return (
-    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <FilterContext.Provider value={{ ...state, setGridView, setListView,handleSorting }}>
       {props.children}
     </FilterContext.Provider>
   );

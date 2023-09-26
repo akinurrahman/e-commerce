@@ -5,9 +5,9 @@ import { FilterContext } from "../context/FilterContext";
 const ProductList = () => {
   const { filter_products, grid_view } = useContext(FilterContext);
   if (grid_view === true) {
-    return <GridView products={filter_products} />;
+    return <GridView filter_products={filter_products} />;
   } else {
-    return <ListView products={filter_products} />;
+    return <ListView filter_products={filter_products} />;
   }
 };
 

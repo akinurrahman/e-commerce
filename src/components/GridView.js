@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Product from "./Product";
 
-const GridView = ({ products }) => {
+const GridView = ({ filter_products }) => {
   return (
     <Wrapper className="section">
       <div className="container grid grid-three-column">
-        {products.map((curElem) => {
+        {filter_products.map((curElem) => {
           return <Product key={curElem.id} {...curElem} />;
         })}
       </div>

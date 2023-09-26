@@ -3,11 +3,11 @@ import styled from "styled-components";
 import FormatPrice from "../Helpers/FormatPrice";
 import { Button } from "../styles/Button";
 
-const ListView = ({ products }) => {
+const ListView = ({ filter_products }) => {
   return (
     <Wrapper className="section">
       <div className="container grid">
-        {products.map((curElem,index) => {
+        {filter_products.map((curElem,index) => {
           const { id, name, image, price, description } = curElem;
           return (
             <div className="card grid grid-two-column" key={index}>

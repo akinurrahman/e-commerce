@@ -9,7 +9,6 @@ const Sort = () => {
     setListView,
     filter_products,
     handleSorting,
-    selected_value,
   } = useContext(FilterContext);
   return (
     <Wrapper className="sort-section">
@@ -40,7 +39,6 @@ const Sort = () => {
             name="sort"
             className="sort-selection--style"
             id="sort"
-            value={selected_value}
             onChange={handleSorting}
           >
             <option value="">Sort By</option>

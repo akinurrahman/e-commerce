@@ -1,5 +1,6 @@
 const FilterReducer = (state, action) => {
   switch (action.type) {
+    // --------Load Filter Products Starts Here ------------------
     case "LOAD_FILTER_PRODUCTS":
       return {
         ...state,
@@ -7,6 +8,7 @@ const FilterReducer = (state, action) => {
         all_products: [...action.payload],
       };
 
+    //--------Set Grid View Starts Here--------------------------
     case "SET_GRID_VIEW": {
       return {
         ...state,
@@ -14,6 +16,7 @@ const FilterReducer = (state, action) => {
       };
     }
 
+    // --------Set List View Starts Here------------------------------
     case "SET_LIST_VIEW": {
       return {
         ...state,
@@ -21,6 +24,7 @@ const FilterReducer = (state, action) => {
       };
     }
 
+    // --------Sort Products Starts Here--------------------------
     case "SORT_PRODUCTS":
       let sortedProducts = [];
 
@@ -61,6 +65,53 @@ const FilterReducer = (state, action) => {
       return {
         ...state,
         filter_products: sortedProducts,
+      };
+    // ------------ Sort Products Ends Here ----------------------
+
+    // ------------Update Filter Value Starts Here----------------------
+    case "UPADATE_FILTER_VALUE":
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [name]: value,
+        },
+      };
+
+    // -----------Filter Products Starts Here-------------------------
+    case "FILTER_PRODUCTS":
+      let { all_products } = state;
+      let tempFilterProducts = [...all_products];
+      const { category, company, text } = state.filters;
+      if (text) {
+        tempFilterProducts = tempFilterProducts.filter((currElem) => {
+          return currElem.name.toLowerCase().includes(text);
+        });
+      }
+
+      if (category) {
+        tempFilterProducts = tempFilterProducts.filter((currElem) => {
+          return currElem.category === category;
+        });
+      }
+
+      if (category === "All") {
+        return {
+          ...state,
+          filter_products: all_products,
+        };
+      }
+
+      if (company) {
+        tempFilterProducts = tempFilterProducts.filter((currElem) => {
+          return currElem.company === company;
+        });
+      }
+
+      return {
+        ...state,
+        filter_products: tempFilterProducts,
       };
 
     default:

@@ -24,6 +24,7 @@ const FilterReducer = (state, action) => {
     case "SORT_PRODUCTS":
       let sortedProducts = [];
 
+      //action.payload contains the data which is selected for example 'a-z' or 'z-a'
       switch (action.payload) {
         case "a-z":
           // Sort products alphabetically from A to Z
@@ -60,7 +61,6 @@ const FilterReducer = (state, action) => {
       return {
         ...state,
         filter_products: sortedProducts,
-        selected_value: action.payload,
       };
 
     default:

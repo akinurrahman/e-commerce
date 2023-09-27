@@ -7,7 +7,6 @@ const initialState = {
   filter_products: [],
   all_products: [],
   grid_view: true,
-  selected_value : ""
 };
 const FilterContextProvider = (props) => {
   const { products } = useContext(AppContext);

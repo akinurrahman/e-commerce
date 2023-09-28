@@ -9,8 +9,9 @@ const initialState = {
   grid_view: true,
   filters: {
     text: "",
-    category: 'All',
-    company: 'All'
+    category: "All",
+    company: "All",
+    color: "All",
   },
 };
 const FilterContextProvider = (props) => {
@@ -40,10 +41,10 @@ const FilterContextProvider = (props) => {
   };
 
   // to sort the product
-  useEffect(()=>{
-    dispatch({type: 'FILTER_PRODUCTS'})
-    dispatch({ type: 'SORTING_PRODUCT'})
-  },[products, state.filters])
+  useEffect(() => {
+    dispatch({ type: "FILTER_PRODUCTS" });
+    dispatch({ type: "SORTING_PRODUCT" });
+  }, [products, state.filters]);
 
   // to load all the products
   useEffect(() => {

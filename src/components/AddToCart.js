@@ -28,7 +28,7 @@ const AddToCart = ({ product }) => {
                 style={{ background: currColor }}
                 className={color === currColor ? "btnStyle active" : "btnStyle"}
               >
-                {color === currColor ? <FaCheck /> : null}
+                {color === currColor ? <FaCheck className="checkStyle" /> : null}
               </button>
             );
           })}
@@ -74,7 +74,6 @@ const Wrapper = styled.section`
   }
 
   .checkStyle {
-    font-size: 1rem;
     color: #fff;
   }
 

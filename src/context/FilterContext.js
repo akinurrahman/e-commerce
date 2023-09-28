@@ -9,8 +9,8 @@ const initialState = {
   grid_view: true,
   filters: {
     text: "",
-    category: '',
-    company: ''
+    category: 'All',
+    company: 'All'
   },
 };
 const FilterContextProvider = (props) => {

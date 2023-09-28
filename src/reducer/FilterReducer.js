@@ -90,24 +90,21 @@ const FilterReducer = (state, action) => {
         });
       }
 
-      if (category) {
+      if (category !== 'All') {
         tempFilterProducts = tempFilterProducts.filter((currElem) => {
           return currElem.category === category;
         });
       }
 
-      if (category === "All") {
-        return {
-          ...state,
-          filter_products: all_products,
-        };
-      }
+    
 
-      if (company) {
+      if (company !== "All") {
         tempFilterProducts = tempFilterProducts.filter((currElem) => {
           return currElem.company === company;
         });
       }
+
+   
 
       return {
         ...state,

@@ -2,10 +2,17 @@ const FilterReducer = (state, action) => {
   switch (action.type) {
     // --------Load Filter Products Starts Here ------------------
     case "LOAD_FILTER_PRODUCTS":
+      let priceArr = action.payload.map((currPrice) => currPrice.price);
+      let maxPrice = Math.max(...priceArr);
       return {
         ...state,
         filter_products: [...action.payload],
         all_products: [...action.payload],
+        filters: {
+          ...state.filters,
+          maxPrice: maxPrice,
+          price: maxPrice,
+        },
       };
 
     //--------Set Grid View Starts Here--------------------------
@@ -83,7 +90,7 @@ const FilterReducer = (state, action) => {
     case "FILTER_PRODUCTS":
       let { all_products } = state;
       let tempFilterProducts = [...all_products];
-      const { category, company, text, color } = state.filters;
+      const { category, company, text, color, price } = state.filters;
       if (text) {
         tempFilterProducts = tempFilterProducts.filter((currElem) => {
           return currElem.name.toLowerCase().includes(text);
@@ -101,12 +108,17 @@ const FilterReducer = (state, action) => {
           return currElem.company === company;
         });
       }
-      if (color !== 'All') {
+      if (color !== "All") {
         tempFilterProducts = tempFilterProducts.filter((currElem) => {
           return currElem.colors.includes(color);
         });
       }
 
+      if (price) {
+        tempFilterProducts = tempFilterProducts.filter((currElem) => {
+          return currElem.price <= price;
+        });
+      }
       return {
         ...state,
         filter_products: tempFilterProducts,

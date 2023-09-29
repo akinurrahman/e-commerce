@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { FilterContext } from "../context/FilterContext";
 import { FaCheck } from "react-icons/fa";
 import FormatPrice from "../Helpers/FormatPrice";
+import { Button } from "../styles/Button";
 const FilterSection = () => {
   const {
     filters: { text, color, category, price, maxPrice, minPrice },
     updateFilterValue,
     all_products,
+    clearFilters,
   } = useContext(FilterContext);
 
   const getUniqueData = (data, property) => {
@@ -131,11 +133,11 @@ const FilterSection = () => {
         />
       </div>
 
-      {/* <div className="filter-clear">
+      <div className="filter-clear">
         <Button className="btn" onClick={clearFilters}>
           Clear Filters
         </Button>
-      </div> */}
+      </div>
     </Wrapper>
   );
 };
@@ -242,7 +244,7 @@ const Wrapper = styled.section`
   }
 
   .filter-clear .btn {
-    background-color: #ec7063;
+    background-color: #93ccff;
     color: #000;
   }
 `;

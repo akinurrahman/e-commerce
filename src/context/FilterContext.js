@@ -36,6 +36,11 @@ const FilterContextProvider = (props) => {
     dispatch({ type: "SORT_PRODUCTS", payload: eventValue });
   };
 
+  //  Clear Filter
+  const clearFilters = () => {
+    dispatch({ type: "CLEAR_ALL_FILTER" });
+  };
+
   // updateFilterValue
   const updateFilterValue = (e) => {
     let name = e.target.name;
@@ -61,6 +66,7 @@ const FilterContextProvider = (props) => {
         setListView,
         handleSorting,
         updateFilterValue,
+        clearFilters,
       }}
     >
       {props.children}

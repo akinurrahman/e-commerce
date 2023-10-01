@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
+import { CartContext } from "../context and reducers/context/CartContext";
 
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
-
+  const { total_quantity } = useContext(CartContext);
   const Nav = styled.nav`
     .navbar-lists {
       display: flex;
@@ -169,7 +170,8 @@ const Nav = () => {
             <NavLink
               to="/"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Home
             </NavLink>
           </li>
@@ -177,7 +179,8 @@ const Nav = () => {
             <NavLink
               to="/about"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               About
             </NavLink>
           </li>
@@ -185,7 +188,8 @@ const Nav = () => {
             <NavLink
               to="/products"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Products
             </NavLink>
           </li>
@@ -193,14 +197,15 @@ const Nav = () => {
             <NavLink
               to="/contact"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Contact
             </NavLink>
           </li>
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item"> 10 </span>
+              <span className="cart-total--item"> {total_quantity} </span>
             </NavLink>
           </li>
         </ul>

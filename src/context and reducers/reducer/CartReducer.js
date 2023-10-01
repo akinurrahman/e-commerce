@@ -121,6 +121,19 @@ const CartReducer = (state, action) => {
         cart: updatedProductDecrement,
       };
 
+    case "CART_TOTAL_ITEM":
+      // Calculate the total quantity of items in the cart
+      let updatedItemValue = state.cart.reduce((inititalVal, currElem) => {
+        let { quantity } = currElem;
+        inititalVal = inititalVal + quantity;
+        return inititalVal;
+      }, 0);
+      
+      // Return updated state with the total quantity of items in the cart
+      return {
+        ...state,
+        total_quantity: updatedItemValue,
+      };
     default:
       return state;
   }

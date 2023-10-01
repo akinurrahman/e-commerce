@@ -4,7 +4,7 @@ import axios from "axios";
 const AppContext = createContext();
 const API = "https://api.pujakaitem.com/api/products";
 
-// initial state for useReducer
+// Initial state for useReducer
 const initialState = {
   isLoading: false,
   isError: false,
@@ -13,43 +13,36 @@ const initialState = {
   isSingleLoading: false,
   singleProduct: {},
 };
-// Actions
-const actions = {
-  SET_LOADING: "SET_LOADING",
-  SET_API_DATA: "SET_API_DATA",
-  API_ERROR: "API_ERROR",
-  SET_SINGLE_LOADING: "SET_SINGLE_LOADING",
-  SET_SINGLE_PRODUCT: "SET_SINGLE_PRODUCT",
-  SET_SINGLE_ERROR: "SET_SINGLE_ERROR",
-};
+
 const AppProvider = (props) => {
-  // useReducer
+  // Use useReducer to manage state
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Function to fetch products from the API
   const getProducts = async (url) => {
-    dispatch({ type: actions.SET_LOADING });
+    dispatch({ type: "SET_LOADING" });
     try {
       const res = await axios.get(url);
       const products = await res.data;
-      dispatch({ type: actions.SET_API_DATA, payload: products });
+      dispatch({ type: "SET_API_DATA", payload: products });
     } catch (error) {
-      dispatch({ type: actions.API_ERROR });
+      dispatch({ type: "API_ERROR" });
     }
   };
 
-  //  2nd api call for single product
-
+  // Function to fetch a single product from the API
   const getSingleProduct = async (url) => {
-    dispatch({ type: actions.SET_SINGLE_LOADING });
+    dispatch({ type: "SET_SINGLE_LOADING" });
     try {
       const res = await axios.get(url);
       const singleProduct = await res.data;
-      dispatch({ type: actions.SET_SINGLE_PRODUCT, payload: singleProduct });
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
     } catch (error) {
-      dispatch({ type: actions.SET_SINGLE_ERROR });
+      dispatch({ type: "SET_SINGLE_ERROR" });
     }
   };
 
+  // Fetch products from the API when the component mounts
   useEffect(() => {
     getProducts(API);
   }, []);
@@ -62,4 +55,4 @@ const AppProvider = (props) => {
 };
 
 export default AppProvider;
-export { AppContext, actions };
+export { AppContext };

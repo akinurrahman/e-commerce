@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
 import CartQuantityToggle from "./CartQuantityToggle";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
+import { CartContext } from "../context/CartContext";
 const AddToCart = ({ product }) => {
-  const { colors, stock } = product;
+  const { colors, stock, id } = product;
+  const { AddToCart } = useContext(CartContext);
   const [color, setColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
 
-  const setIncr = () => {
+  const setIncrement = () => {
     quantity < stock && setQuantity((prev) => prev + 1);
   };
-  const setDecr = () => {
+  const setDecrement = () => {
     quantity > 1 && setQuantity((prev) => prev - 1);
   };
   return (
@@ -28,7 +30,9 @@ const AddToCart = ({ product }) => {
                 style={{ background: currColor }}
                 className={color === currColor ? "btnStyle active" : "btnStyle"}
               >
-                {color === currColor ? <FaCheck className="checkStyle" /> : null}
+                {color === currColor ? (
+                  <FaCheck className="checkStyle" />
+                ) : null}
               </button>
             );
           })}
@@ -37,10 +41,13 @@ const AddToCart = ({ product }) => {
 
       <CartQuantityToggle
         quantity={quantity}
-        setIncr={setIncr}
-        setDecr={setDecr}
+        setIncrement={setIncrement}
+        setDecrement={setDecrement}
       />
-      <NavLink to="/cart">
+      <NavLink
+        to="/cart"
+        onClick={() => AddToCart(id, color, quantity, product)}
+      >
         <Button className="btn">Add To Cart</Button>
       </NavLink>
     </Wrapper>
@@ -75,27 +82,6 @@ const Wrapper = styled.section`
 
   .checkStyle {
     color: #fff;
-  }
-
-  /* we can use it as a global one too  */
-  .quantity-toggle {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.4rem;
-
-    button {
-      border: none;
-      background-color: #fff;
-      cursor: pointer;
-    }
-
-    .quantity-style {
-      font-size: 2.4rem;
-      color: ${({ theme }) => theme.colors.btn};
-    }
   }
 `;
 export default AddToCart;

@@ -3,6 +3,7 @@ import reducer from "../reducer/FilterReducer";
 import { AppContext } from "./AppProvider";
 const FilterContext = createContext();
 
+// Initial state for useReducer
 const initialState = {
   filter_products: [],
   all_products: [],
@@ -21,40 +22,40 @@ const FilterContextProvider = (props) => {
   const { products } = useContext(AppContext);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // to set grid view
+  // Function to set grid view
   const setGridView = () => {
     return dispatch({ type: "SET_GRID_VIEW" });
   };
-  // to set List view
+  // Function to set list view
   const setListView = () => {
     return dispatch({ type: "SET_LIST_VIEW" });
   };
 
-  // handleSorting
+  // Function to handle product sorting
   const handleSorting = (e) => {
     const eventValue = e.target.value;
     dispatch({ type: "SORT_PRODUCTS", payload: eventValue });
   };
 
-  //  Clear Filter
+  // Function to clear all filters
   const clearFilters = () => {
     dispatch({ type: "CLEAR_ALL_FILTER" });
   };
 
-  // updateFilterValue
+  // Function to update filter values
   const updateFilterValue = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     dispatch({ type: "UPADATE_FILTER_VALUE", payload: { name, value } });
   };
 
-  // to sort the product
+  // Effect to filter and sort products based on state changes
   useEffect(() => {
     dispatch({ type: "FILTER_PRODUCTS" });
     dispatch({ type: "SORTING_PRODUCT" });
   }, [products, state.filters]);
 
-  // to load all the products
+  // Effect to load all the products
   useEffect(() => {
     dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
   }, [products]);

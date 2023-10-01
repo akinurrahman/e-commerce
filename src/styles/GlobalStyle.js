@@ -135,6 +135,27 @@ ${"" /* resuable code section  */}
       border-radius: 2rem;
     }
 
+
+  .quantity-toggle {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.4rem;
+
+    button {
+      border: none;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    .quantity-style {
+      font-size: 2.4rem;
+      color: ${({ theme }) => theme.colors.btn};
+    }
+  }    
+
 input, textarea{
     max-width: 50rem;
     color: ${({ theme }) => theme.colors.black};

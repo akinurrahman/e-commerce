@@ -1,7 +1,7 @@
 const FilterReducer = (state, action) => {
   switch (action.type) {
-    // --------Load Filter Products Starts Here ------------------
     case "LOAD_FILTER_PRODUCTS":
+      // Load all products and initialize filter options
       let priceArr = action.payload.map((currPrice) => currPrice.price);
       let maxPrice = Math.max(...priceArr);
       return {
@@ -15,7 +15,7 @@ const FilterReducer = (state, action) => {
         },
       };
 
-    //--------Set Grid View Starts Here--------------------------
+    // Set grid view
     case "SET_GRID_VIEW": {
       return {
         ...state,
@@ -23,7 +23,7 @@ const FilterReducer = (state, action) => {
       };
     }
 
-    // --------Set List View Starts Here------------------------------
+    // Set List view
     case "SET_LIST_VIEW": {
       return {
         ...state,
@@ -31,11 +31,10 @@ const FilterReducer = (state, action) => {
       };
     }
 
-    // --------Sort Products Starts Here--------------------------
+    // Sort products based on the selected option
     case "SORT_PRODUCTS":
       let sortedProducts = [];
 
-      //action.payload contains the data which is selected for example 'a-z' or 'z-a'
       switch (action.payload) {
         case "a-z":
           // Sort products alphabetically from A to Z
@@ -52,12 +51,14 @@ const FilterReducer = (state, action) => {
           break;
 
         case "Lowest To Highest":
+          // Sort products by price from lowest to highest
           sortedProducts = state.filter_products.slice().sort((a, b) => {
             return parseFloat(a.price) - parseFloat(b.price);
           });
           break;
 
         case "Highest To Lowest":
+          // Sort products by price from highest to lowest
           sortedProducts = state.filter_products.slice().sort((a, b) => {
             return parseFloat(b.price) - parseFloat(a.price);
           });
@@ -73,9 +74,8 @@ const FilterReducer = (state, action) => {
         ...state,
         filter_products: sortedProducts,
       };
-    // ------------ Sort Products Ends Here ----------------------
 
-    // ------------Update Filter Value Starts Here----------------------
+    // Update filter values based on user input
     case "UPADATE_FILTER_VALUE":
       const { name, value } = action.payload;
       return {
@@ -86,7 +86,7 @@ const FilterReducer = (state, action) => {
         },
       };
 
-    // -----------Filter Products Starts Here-------------------------
+    // Filter products based on filter criteria
     case "FILTER_PRODUCTS":
       let { all_products } = state;
       let tempFilterProducts = [...all_products];
@@ -125,6 +125,7 @@ const FilterReducer = (state, action) => {
         filter_products: tempFilterProducts,
       };
 
+    // Clear all filters and reset to default values
     case "CLEAR_ALL_FILTER":
       return {
         ...state,

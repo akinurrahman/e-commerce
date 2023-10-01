@@ -1,7 +1,42 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { CartContext } from "../context/CartContext";
+import CartItem from "../components/CartItem";
+import { Button } from "../styles/Button";
+import { NavLink } from "react-router-dom";
 
 const Cart = () => {
-  return <Wrapper></Wrapper>;
+  const { cart, clearCart } = useContext(CartContext);
+
+  return (
+    <Wrapper>
+      <div className="container">
+        <div className="cart_heading grid grid-five-column">
+          <p>Item</p>
+          <p className="cart-hide">Price</p>
+          <p>Quantity</p>
+          <p className="cart-hide">Subtotal</p>
+          <p>Remove</p>
+        </div>
+        <hr />
+
+        <div className="cart-item">
+          {cart.map((curElem) => {
+            return <CartItem key={curElem.id} {...curElem} />;
+          })}
+        </div>
+        <hr />
+        <div className="cart-two-button">
+          <NavLink to="/products">
+            <Button> continue Shopping </Button>
+          </NavLink>
+          <Button className="btn btn-clear" onClick={clearCart}>
+            clear cart
+          </Button>
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`

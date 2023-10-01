@@ -16,7 +16,9 @@ const getLocalCartData = () => {
 const initialState = {
   cart: getLocalCartData(),
   total_quantity: 0,
-  total_amount: 49999999,
+  sub_total: 0,
+  shipping_charge: 0,
+  total_price: 0,
 };
 const CartContextProvider = (props) => {
   // Use reducer to manage state
@@ -52,7 +54,10 @@ const CartContextProvider = (props) => {
 
   useEffect(() => {
     // Dispatch the action to calculate the total quantity
-    dispatch({ type: "CART_TOTAL_ITEM" });
+    dispatch({ type: "CART_TOTAL_QUANTITY" });
+
+    // Dispatch the action to calculate the subtotal
+    dispatch({ type: "CART_SUB_TOTAL" });
 
     // Store the updated cart state in local storage
     localStorage.setItem("Shoppy cart items", JSON.stringify(state.cart));

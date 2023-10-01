@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
-import { FilterContext } from "../context/FilterContext";
+import { FilterContext } from "../context and reducers/context/FilterContext";
 const Sort = () => {
   const {
     grid_view,

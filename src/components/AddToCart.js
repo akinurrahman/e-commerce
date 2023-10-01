@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import CartQuantityToggle from "./CartQuantityToggle";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context and reducers/context/CartContext";
 const AddToCart = ({ product }) => {
   const { colors, stock, id } = product;
   const { AddToCart } = useContext(CartContext);

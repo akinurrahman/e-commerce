@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import reducer from "../reducer/CartReducer";
+import CartReducer from "../reducer/CartReducer";
 const CartContext = createContext();
 
 // Function to retrieve cart data from local storage
@@ -21,7 +21,7 @@ const initialState = {
 };
 const CartContextProvider = (props) => {
   // Use reducer to manage state
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(CartReducer, initialState);
 
   // Function to add an item to the cart
   const AddToCart = (id, color, quantity, product) => {

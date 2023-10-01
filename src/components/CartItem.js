@@ -2,16 +2,10 @@ import React, { useContext } from "react";
 import FormatPrice from "../Helpers/FormatPrice";
 import CartQuantityToggle from "./CartQuantityToggle";
 import { FaTrash } from "react-icons/fa";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context and reducers/context/CartContext";
 
 const CartItem = ({ id, name, image, color, price, quantity }) => {
   const { removeItem, setIncrement, setDecrement } = useContext(CartContext);
-  // const setIncr = (id) => {
-  //   quantity < stock && setQuantity((prev) => prev + 1);
-  // };
-  // const setDecr = () => {
-  //   // quantity > 1 && setQuantity((prev) => prev - 1);
-  // };
 
   return (
     <div className="cart_heading grid grid-five-column">

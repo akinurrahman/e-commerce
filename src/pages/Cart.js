@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { CartContext } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 import { Button } from "../styles/Button";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../context and reducers/context/CartContext";
 
 const Cart = () => {
   const { cart, clearCart } = useContext(CartContext);

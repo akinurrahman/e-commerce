@@ -9,7 +9,7 @@ import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import Star from "../components/Star";
 import AddToCart from "../components/AddToCart";
-import { AppContext } from "../context/AppProvider";
+import { AppContext } from "../context and reducers/context/AppProvider";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -83,14 +83,13 @@ const SingleProduct = () => {
                 Available:
                 <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
               </p>
-              <p>
-              </p>
+              <p></p>
               <p>
                 Brand :<span> {company} </span>
               </p>
             </div>
             <hr />
-            {stock >= 1 && <AddToCart product={singleProduct}/>}
+            {stock >= 1 && <AddToCart product={singleProduct} />}
           </div>
         </div>
       </Container>

@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import FilterSection from "../components/FilterSection";
 import ProductList from "../components/ProductList";
 import Sort from "../components/Sort";
+import { AppContext } from "../context and reducers/context/AppProvider";
 const Products = () => {
+  const {isLoading} = useContext(AppContext)
+  if (isLoading) {
+    return (
+      <div>
+        {" "}
+        <img className="loading-gif" src="./images/giphy.gif" alt="" />{" "}
+      </div>
+    );
+  }
   return (
     <Wrapper>
       <div className="container grid grid-filter-column">

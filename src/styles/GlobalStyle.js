@@ -197,4 +197,15 @@ input, textarea{
         }
     }
 
+
+
+
+/* style Loading gif */
+.loading-gif {
+  display: block;
+  margin: 0 auto;
+  max-width: 100px; /* Adjust the maximum width as needed */
+  height: auto;
+}
+
 `;

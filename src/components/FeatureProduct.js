@@ -7,7 +7,7 @@ const FeatureProduct = () => {
   const { isLoading, featureProducts } = useContext(AppContext);
 
   if (isLoading) {
-    return <div> ......Loading </div>;
+    return <div> <img className="loading-gif" src="/images/giphy.gif" alt="" /> </div>;
   }
 
   return (

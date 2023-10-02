@@ -28,7 +28,12 @@ const SingleProduct = () => {
   }, []);
 
   if (isSingleLoading) {
-    return <div className="page_loading">Loading.....</div>;
+    return (
+      <div>
+        {" "}
+        <img className="loading-gif" src="/images/giphy.gif" alt="" />{" "}
+      </div>
+    );
   }
 
   return (

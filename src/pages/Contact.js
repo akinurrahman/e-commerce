@@ -38,7 +38,7 @@ const Contact = () => {
       <h2 className="common-heading">Contact page</h2>
 
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d458495.4716970157!2d89.7614182279261!3d26.131677560120607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37580c58502f9e59%3A0xbed1f280973bbd13!2sDhubri%2C%20Assam!5e0!3m2!1sen!2sin!4v1695537165673!5m2!1sen!2sin"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1113.1015632257513!2d89.96958751283685!3d26.02445303871008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e2a03eecb51a6d%3A0xb84e629bd4dabd09!2sDhubri%2C%20Assam!5e0!3m2!1sen!2sin!4v1696229676708!5m2!1sen!2sin"
         width="100%"
         height="400"
         style={{ border: 0 }}

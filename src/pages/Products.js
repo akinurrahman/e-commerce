@@ -9,8 +9,8 @@ const Products = () => {
   if (isLoading) {
     return (
       <div>
-        {" "}
-        <img className="loading-gif" src="./images/giphy.gif" alt="" />{" "}
+        
+        <img className="loading-gif" src="./images/giphy.gif" alt="" />
       </div>
     );
   }

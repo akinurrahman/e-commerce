@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import FormatPrice from "../Helpers/FormatPrice";
-import { AppContext } from "../context and reducers/context/AppProvider";
 
 const Product = (curElem, index) => {
   const { id, name, image, price, category } = curElem;
-  
+
   return (
     <NavLink to={`/singleproduct/${id}`} key={index}>
       <div className="card">

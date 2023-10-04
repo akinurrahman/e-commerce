@@ -10,7 +10,7 @@ import { Button } from "../styles/Button";
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
   const { total_quantity } = useContext(CartContext);
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const Nav = styled.nav`
     .navbar-lists {
       display: flex;

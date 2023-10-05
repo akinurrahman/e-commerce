@@ -11,7 +11,7 @@ import Star from "../components/Star";
 import AddToCart from "../components/AddToCart";
 import { AppContext } from "../context and reducers/context/AppProvider";
 
-const API = "https://api.pujakaitem.com/api/products";
+const API = process.env.REACT_APP_API_KEY;
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =

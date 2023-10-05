@@ -2,7 +2,7 @@ import reducer from "../reducer/AppReducer";
 import { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
 const AppContext = createContext();
-const API = "https://api.pujakaitem.com/api/products";
+const API = process.env.REACT_APP_API_KEY
 
 // Initial state for useReducer
 const initialState = {

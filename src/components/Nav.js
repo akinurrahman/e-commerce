@@ -219,7 +219,7 @@ const Nav = () => {
             </li>
           ) : (
             <li>
-              <Button onClick={() => loginWithRedirect()}>Log In</Button>;
+              <Button onClick={() => loginWithRedirect()}>Log In</Button>
             </li>
           )}
 

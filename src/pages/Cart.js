@@ -10,19 +10,17 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Cart = () => {
   const { cart, clearCart, sub_total, shipping_charge, total_price } =
     useContext(CartContext);
-    const {isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <Wrapper>
-
-      
       <div className="container">
-        {
-          isAuthenticated && <div className="cart-user--profile">
-            <img src={user.profile} alt="profile" />
+        {isAuthenticated && (
+          <div className="cart-user--profile">
+            <img src={user.picture} alt="profile" />
             <h2 className="cart-user--name">{user.name}</h2>
           </div>
-        }
+        )}
         <div className="cart_heading grid grid-five-column">
           <p>Item</p>
           <p className="cart-hide">Price</p>
